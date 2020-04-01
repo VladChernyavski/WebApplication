@@ -4,12 +4,12 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
+<h1>Вход</h1>
 
 
 <div class="row">
     <div class="col-md-6">
-        <h4>LoginViewModel</h4>
+        <h4>Вход в учетную запись</h4>
         <hr />
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -29,13 +29,13 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Войти" class="btn btn-primary" />
             </div>
         </form>
     </div>
     <div class="col-md-6">
         @if (!(Model.ExternalLogins == null)) {
-            <h4>LoginViewModel</h4>
+            <h4>Вход с помощью внешних учетных записей</h4>
             <hr />
             <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
                 <div>
@@ -52,7 +52,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Register">Зарегистрироваться</a>
 </div>
 
 @section Scripts {

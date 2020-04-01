@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebAppChernyavskiy.Models.Account;
+using WebAppChernyavskiy.Models.Collections;
 
 namespace WebAppChernyavskiy {
     public class Startup {
@@ -21,7 +22,10 @@ namespace WebAppChernyavskiy {
 
         public void ConfigureServices(IServiceCollection services) {
 
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AccountConnection")));
+            services.AddDbContext<UserContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("AccountConnection")));
+            services.AddDbContext<CollectionContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CollectionConnection")));
 
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserContext>();
 

@@ -150,3 +150,8 @@ C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\ob
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Users\RolesList.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserList.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\CreateCollection.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Item.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\AddItem.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\ItemsList.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\CollectionsList.cshtml.g.cs

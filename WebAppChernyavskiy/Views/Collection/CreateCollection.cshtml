@@ -1,0 +1,37 @@
+﻿@model WebAppChernyavskiy.Models.Collections.Collection
+
+@{
+    ViewData["Title"] = "CreateCollection";
+}
+
+<h1>Создание коллекции</h1>
+
+<h4>Введите название и тему коллекции</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCollection">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Выберите тему:</label>
+                <select asp-for="TopicId" asp-items="ViewBag.Topics"></select>
+            </div>
+            <div class="form-group">
+                <input asp-for="UserId" class="form-control" type="hidden" value="@User.Identity.Name" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
