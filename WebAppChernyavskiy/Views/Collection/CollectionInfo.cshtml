@@ -1,0 +1,36 @@
+﻿@model WebAppChernyavskiy.Models.Collections.Collection
+
+@{
+    ViewData["Title"] = "Item";
+}
+
+<h1>Страница коллекции</h1>
+
+<div>
+    <h4>Коллекция</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="row">
+
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-info" asp-controller="Collection" asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a>
+            <a class="btn btn-danger" asp-controller="Collection" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Добавить айтем", "AddItem", new { CollectionId = Model.Id }) |
+    @Html.ActionLink("Список айтеймов", "ItemsList", new { Model.Id })
+</div>

@@ -28,16 +28,15 @@ namespace WebAppChernyavskiy.Controllers {
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model) {
             if (ModelState.IsValid) {
+
                 User user = new User { Email = model.Email, UserName = model.Email }; 
-                // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded) {
-                    // установка куки
                     await _signInManager.SignInAsync(user, false);
                     await _userManager.AddToRoleAsync(user, "user");
                     return RedirectToAction("Index", "Home");
-                }
-                else {
+                } else {
                     foreach (var error in result.Errors) {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
@@ -60,10 +59,10 @@ namespace WebAppChernyavskiy.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model) {
                 if (ModelState.IsValid) {
-                    var result =
-                        await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+                    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
                     if (result.Succeeded) {
-                        // проверяем, принадлежит ли URL приложению
                         if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl)) {
                             return Redirect(model.ReturnUrl);
                         }
@@ -86,14 +85,13 @@ namespace WebAppChernyavskiy.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout() {
-            // удаляем аутентификационные куки
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
         public IActionResult ExternalLogin(string provider, string returnUrl) {
-                var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
 
+                var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
                 var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
 
                 return new ChallengeResult(provider, properties);
@@ -151,9 +149,6 @@ namespace WebAppChernyavskiy.Controllers {
 
                         return LocalRedirect(returnUrl);
                     }
-
-                    ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
-                    ViewBag.ErrorMessage = "Please contact support on .....@...";
 
                     return View("Error");
                 }             

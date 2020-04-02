@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADvsh2NXggE+eXk3TPOGxrQAAAAACAAAAAAAQZgAAAAEAACAAAADZxXDfnGw06VLrSloJ0D6CUZEuUrW5posaamdDuAvCiQAAAAAOgAAAAAIAACAAAABT003hQygcR/nI/EjGYGhwhRQ61JawDwjHZfZHbkLcGYAAAABWJH/y7djhdiVK+o3cnVjSTwFUtaVNogworOZUBsXNVw3K73kDqED/Nf+FWLe2NE4iXociPKup1jnxK7topzausidUqzHO8MwotYd1ae/roNfcqHSRaomcwS0mtDhJCtLL3TbvEAcoXaEPDIcDcInjFU7zy7gt9VBJJHYT8rC0t0AAAADYWjPbbYe0BOJWNkVn+4E2mbrLHcxJT2Gty8nGr2uRER34+2VZwZL2I0RLuUrWTKZR19tWNthwJ65YxmSSEpLE</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:webappchernyavskiyserverdb.database.windows.net,1433%3bInitial Catalog=WebAppChernyavskiy_db%3bUser Id=vlad%40webappchernyavskiyserverdb%3bPassword=%40EFG2efg</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="WebAppChernyavskiy.Models.Account.UserContext">
+      <Value>Data Source=tcp:webappchernyavskiyserverdb.database.windows.net,1433%3bInitial Catalog=WebAppChernyavskiy_db%3bUser Id=vlad%40webappchernyavskiyserverdb%3bPassword=%40EFG2efg</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

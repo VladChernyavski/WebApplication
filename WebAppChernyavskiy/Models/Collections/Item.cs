@@ -9,14 +9,7 @@ namespace WebAppChernyavskiy.Models.Collections {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Date {
-            get {
-                return DateTime.Now.ToString("dd:MM:yyyy HH:mm");
-            }
-            set {
-                value = DateTime.Now.ToString("dd:MM:yyyy HH:mm");
-            }
-        }
+        public string Date { get; set; }
         public int? CollectionId { get; set; }
         public Collection Collection { get; set; }
 
