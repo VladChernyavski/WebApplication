@@ -160,3 +160,4 @@ C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\ob
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Collection\Delete.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Item\Edit.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Item\Delete.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Debug\netcoreapp3.1\Razor\Views\Home\CollectionInfo.cshtml.g.cs

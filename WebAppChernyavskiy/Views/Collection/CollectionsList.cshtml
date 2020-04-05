@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAppChernyavskiy.Models.Collections.Collection>
+﻿@model WebAppChernyavskiy.ViewModels.Collections.CollectionListViewModel
 
 @{
     ViewData["Title"] = "ColectionsList";
@@ -6,42 +6,53 @@
 
 <h1>Список коллекций</h1>
 
-<p>
-    @Html.ActionLink("Создать коллекцию", "CreateCollection", new { /* id=item.PrimaryKey */ })
-</p>
+<link rel="stylesheet" href="~/css/collectionListStyle.css" />
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Имя: </label>
+        <input name="name" class="form-control" />
+
+        <label class="control-label">Тема: </label>
+        <select name="topic" asp-items="Model.Topics" class="form-control"></select>
+
+        <input type="submit" value="Фильтр" class="btn btn-outline-primary" />
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Название коллекции
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TopicId)
+                Тема
             </th>
             <th></th>
+            <th>
+                <a id="createColl" asp-action="CreateCollection" class="btn btn-primary">
+                    Создать новую коллекцию
+                </a>
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Collections) {
+    if (item.UserId == User.Identity.Name) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TopicId)
+                @Html.DisplayFor(modelItem => item.Topic.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Страница коллекции", "CollectionInfo", new { item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="CollectionInfo" asp-route-id="@item.Id" class="btn btn-warning">
+                    Управление коллекцией
+                </a>
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>

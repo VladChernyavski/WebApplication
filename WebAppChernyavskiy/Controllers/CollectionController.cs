@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppChernyavskiy.Models.Account;
 using WebAppChernyavskiy.Models.Collections;
+using WebAppChernyavskiy.ViewModels.Collections;
+using WebAppChernyavskiy.ViewModels.Items;
 
 namespace WebAppChernyavskiy.Controllers {
     public class CollectionController : Controller {
@@ -17,9 +19,28 @@ namespace WebAppChernyavskiy.Controllers {
             db = context;
         }
 
-        public IActionResult CollectionsList() {
-            return View(db.Collections.Include(u => u.Topic).Where(p => p.UserId == User.Identity.Name).ToList());
+        public IActionResult CollectionsList(int? topic, string name) {
+            //        return View(db.Collections.Include(u => u.Topic).Where(p => p.UserId == User.Identity.Name).ToList());
+            IQueryable<Collection> collections = db.Collections.Include(p => p.Topic);
+            if (topic != null && topic != 0) {
+                collections = collections.Where(p => p.TopicId == topic);
+            }
+            if (!String.IsNullOrEmpty(name)) {
+                collections = collections.Where(p => p.Name.Contains(name));
+            }
+
+            List<Topic> topics = db.Topics.ToList();
+
+            topics.Insert(0, new Topic { Name = "Все", Id = 0 });
+
+            CollectionListViewModel viewModel = new CollectionListViewModel {
+                Collections = collections.ToList(),
+                Topics = new SelectList(topics, "Id", "Name"),
+                Name = name
+            };
+            return View(viewModel);
         }
+    
 
         [HttpGet]
         public IActionResult CreateCollection() {
@@ -85,8 +106,8 @@ namespace WebAppChernyavskiy.Controllers {
         }
 
         [HttpGet]
-        public IActionResult AddItem(int CollectionId) {
-            ViewBag.Col = CollectionId;
+        public IActionResult AddItem(int collectionId) {
+            ViewBag.Col = collectionId;
             return View();
         }
 
@@ -97,11 +118,48 @@ namespace WebAppChernyavskiy.Controllers {
             return RedirectToAction("ItemsList", new { id = item.CollectionId });
         }
 
-        public IActionResult ItemsList(int? id) {
-            return View(db.Items.Include(u => u.Collection).Where(p => p.CollectionId == id).ToList());
+ //       public IActionResult ItemsList(int? id) {
+   //         return View(db.Items.Include(u => u.Collection).Where(p => p.CollectionId == id).ToList());
+   //     }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveText(Collection collection) {
+            db.Collections.Update(collection);
+            await db.SaveChangesAsync();
+            return RedirectToAction("CollectionInfo", new { collection.Id });
         }
 
+        public async Task<IActionResult> ItemsList(int? id, SortState sortOrder, int page = 1) {
+            int pageSize = 5;
+            ViewBag.Id = id;
 
+            IQueryable<Item> item = db.Items.Include(x => x.Collection);
 
+            switch (sortOrder) {
+                case SortState.NameAsc:
+                    item = item.OrderBy(s => s.Name);
+                    break;
+                case SortState.NameDesc:
+                    item = item.OrderByDescending(s => s.Name);
+                    break;
+            }
+
+            var count = await item.CountAsync();
+            var items = await item.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            PageAndSortViewModel viewModel = new PageAndSortViewModel {
+                PageViewModel = new PageViewModel(count, page, pageSize),
+                SortViewModel = new SortViewModel(sortOrder),
+                Items = items
+            };
+
+            if (viewModel.SortViewModel.UpName) {
+                ViewBag.UpName = "glyphicon glyphicon-chevron-up";
+            } else {
+                ViewBag.UpName = "glyphicon glyphicon-chevron-down";
+            }
+
+            return View(viewModel);
+        }
     }
 }

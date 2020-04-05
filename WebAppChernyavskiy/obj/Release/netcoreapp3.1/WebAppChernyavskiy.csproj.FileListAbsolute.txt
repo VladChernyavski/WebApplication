@@ -137,7 +137,6 @@ C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\ob
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\AddItem.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\CollectionsList.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\CreateCollection.cshtml.g.cs
-C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\Item.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\ItemsList.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -156,3 +155,8 @@ C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\ob
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\WebAppChernyavskiy.dll
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\WebAppChernyavskiy.pdb
 C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\bin\Release\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\CollectionInfo.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\Delete.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Collection\Edit.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Item\Delete.cshtml.g.cs
+C:\Users\Vlad Chernyavskiy\source\repos\WebAppChernyavskiy\WebAppChernyavskiy\obj\Release\netcoreapp3.1\Razor\Views\Item\Edit.cshtml.g.cs

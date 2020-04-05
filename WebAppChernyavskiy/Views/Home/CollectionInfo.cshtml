@@ -1,0 +1,109 @@
+﻿@using WebAppChernyavskiy.Models.Collections
+@using WebAppChernyavskiy.ViewModels.Items
+@model PageAndSortViewModel
+
+@{
+    ViewData["Title"] = "CollectionInfo";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <h1>Коллекция</h1>
+
+        <dl class="row">
+            @foreach (var item in Model.Items) {
+                if (item.CollectionId == ViewBag.Id) {
+                    <dt class="col-sm-6">
+                        @Html.DisplayNameFor(model => item.Collection.Name)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => item.Collection.Name)
+                    </dd>
+                    <dt class="col-sm-6">
+                        @Html.DisplayNameFor(model => item.Collection.Text)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => item.Collection.Text)
+                    </dd>
+                    <dt class="col-sm-6">
+                        @Html.DisplayNameFor(model => item.Collection.UserId)
+                    </dt>
+                    <dd class="col-sm-6">
+                        @Html.DisplayFor(model => item.Collection.UserId)
+                    </dd>
+                    if (User.IsInRole("admin")) {
+                        <dd class="col-sm-10">
+                            <br />
+                            <a class="btn btn-warning" asp-controller="Collection" asp-action="CollectionInfo" asp-route-id="@item.Collection.Id">Редактировать коллекцию</a>
+                        </dd>
+                    }
+                    break;
+                }
+                else {
+                    <h4>У этого пользователя нет добавленых айтеймов</h4>
+                    break;
+                }
+            }
+
+        </dl>
+        
+    </div>
+    <div class="col-md-7">
+        <link rel="stylesheet" href="~/css/ItemStyle.css" />
+        <h1>Список айтеймов</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <a asp-action="CollectionInfo" asp-route-sortOrder="@(Model.SortViewModel.NameSort)">
+                            Название
+                            <i class="@ViewBag.UpName"></i>
+                        </a>
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                    <th>
+                        Дата добавления
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items) {
+                    if (item.CollectionId == ViewBag.Id) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @if (Model.PageViewModel.HasPreviousPage) {
+            <a asp-action="CollectionInfo"
+               asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+               asp-route-sortorder="@(Model.SortViewModel.Current)"
+               class="btn  btn-outline-dark">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Назад
+            </a>
+        }
+        @if (Model.PageViewModel.HasNextPage) {
+            <a asp-action="CollectionInfo"
+               asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+               asp-route-sortorder="@(Model.SortViewModel.Current)"
+               class="btn btn-outline-dark">
+                Вперед
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+    </div>
+</div>
+

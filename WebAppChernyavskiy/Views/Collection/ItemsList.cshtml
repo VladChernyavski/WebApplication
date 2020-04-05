@@ -1,56 +1,68 @@
-﻿@model IEnumerable<WebAppChernyavskiy.Models.Collections.Item>
+﻿@using WebAppChernyavskiy.Models.Collections
+@using WebAppChernyavskiy.ViewModels.Items
+@model PageAndSortViewModel
 
 @{
     ViewData["Title"] = "ItemsList";
 }
-
+<link rel="stylesheet" href="~/css/ItemStyle.css" />
 <h1>Список айтеймов</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                <a asp-action="ItemsList" asp-route-sortOrder="@(Model.SortViewModel.NameSort)">
+                    Название
+                    <i class="@ViewBag.UpName"></i>
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CollectionId)
+                Дата добавления
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CollectionId)
-            </td>
-            <td>
-                @Html.ActionLink("Редактировать", "Edit", "Item", new { item.Id }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Удалить", "Delete" ,"Item", new { item.Id })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Items) {
+            if (item.CollectionId == ViewBag.Id) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Item" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                        <a class="btn btn-danger" asp-controller="Item" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>
+@if (Model.PageViewModel.HasPreviousPage) {
+    <a asp-action="ItemsList"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn  btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage) {
+    <a asp-action="ItemsList"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-sortorder="@(Model.SortViewModel.Current)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
