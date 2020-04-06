@@ -23,7 +23,6 @@ namespace WebAppChernyavskiy.Controllers {
         }
 
         public IActionResult Index(int? topic, string name) {
-            //return View(db.Collections.Include(p => p.Topic).OrderByDescending(o => o.Id).Take(5).ToList());
             IQueryable<Collection> collections = db.Collections.Include(p => p.Topic).
                 OrderByDescending(o => o.Id).Take(10);
             if (topic != null && topic != 0) {

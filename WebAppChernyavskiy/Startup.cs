@@ -28,8 +28,8 @@ namespace WebAppChernyavskiy {
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserContext>();
 
             services.AddAuthentication().AddGoogle(options => {
-                options.ClientId = "199568271462-uiemi1meje3ppg1lb4d86vc8bhj6f5l2.apps.googleusercontent.com";
-                options.ClientSecret = "Gg40Ht_WgAbvDNnTVXWUIg3u";
+                options.ClientId = "199568271462-b35aq0806t1vhqcl40k8dngbo7dfmh0v.apps.googleusercontent.com";
+                options.ClientSecret = "1DQCUCHGbWjCInn5G9VzJxzz";
             }).AddMicrosoftAccount(microsoftOptions => {
                 microsoftOptions.ClientId = "fd26b240-ca72-41f8-80d1-304531721a98";
                 microsoftOptions.ClientSecret = "/9xU9byJC2R6dms@.IUjsNPI@?qF/Ezl";

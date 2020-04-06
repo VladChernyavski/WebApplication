@@ -3,7 +3,4 @@
   <parameter name="IIS Web Application Name" description="" value="WebAppChernyavskiy" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Vlad\ Chernyavskiy\\source\\repos\\WebAppChernyavskiy\\WebAppChernyavskiy\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
   </parameter>
-  <parameter name="WebAppChernyavskiy.Models.Account.UserContext" description="" value="Data Source=tcp:webappchernyavskiyserverdb.database.windows.net,1433;Initial Catalog=WebAppChernyavskiy_db;User Id=vlad@webappchernyavskiyserverdb;Password=@EFG2efg" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\Vlad\ Chernyavskiy\\source\\repos\\WebAppChernyavskiy\\WebAppChernyavskiy\\obj\\Release\\netcoreapp3\.1\\PubTmp\\EFSQLScripts\\WebAppChernyavskiy\.Models\.Account\.UserContext\.sql$" />
-  </parameter>
 </parameters>

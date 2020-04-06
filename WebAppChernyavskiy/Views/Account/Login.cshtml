@@ -1,15 +1,13 @@
 ﻿@model WebAppChernyavskiy.ViewModels.Account.LoginViewModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Вход";
 }
-
-<h1>Вход</h1>
 
 
 <div class="row">
     <div class="col-md-4">
-        <h4>Вход в учетную запись</h4>
+        <h3>Вход в учетную запись</h3>
         <hr />
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,19 +21,14 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
-                </label>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Войти" class="btn btn-primary" />
             </div>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         @if (!(Model.ExternalLogins == null)) {
-            <h4>Вход с помощью внешних учетных записей</h4>
+            <h3>Вход с помощью внешних учетных записей</h3>
             <hr />
             <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
                 <div>

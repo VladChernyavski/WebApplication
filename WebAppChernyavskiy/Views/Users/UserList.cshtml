@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<WebAppChernyavskiy.Models.Account.User>
 
-<h2>Список пользователей</h2>
-<a class="btn btn-sm btn-primary" asp-area="" asp-controller="Users" asp-action="RolesList">Управления ролями</a>
+<h2 style="text-align:center">Список пользователей</h2>
+<div class="row">
+    <a class="btn btn-sm btn-primary" asp-area="" asp-controller="Users" asp-action="RolesList">Управления ролями</a>
+</div>
 <br />
 <table class="table">
     @foreach (var user in Model) {

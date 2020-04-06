@@ -1,12 +1,18 @@
 ﻿@model WebAppChernyavskiy.ViewModels.Collections.CollectionListViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Главная страница";
 }
 <link rel="stylesheet" href="~/css/indexStyle.css" />
 
-<h1>Последние добавленные коллекции пользователей</h1>
 
+<div style="background-color: #f5f5f5; text-align: center" class="jumbotron">
+    <h1>Привет пользователь</h1>
+    <h3>На сайте ты можешь создать свою коллекцию или посмотреть коллекции других пользователей </h3>
+</div>
+
+<h1 style="text-align:center">Последние добавленные коллекции пользователей</h1>
+<br />
 <form method="get">
     <div class="form-inline form-group">
         <label class="control-label">Название коллекции: </label>
@@ -15,7 +21,7 @@
         <label class="control-label">Тема: </label>
         <select name="topic" asp-items="Model.Topics" class="form-control"></select>
 
-        <input type="submit" value="Фильтр" class="btn btn-outline-primary" />
+        <input type="submit" value="Поиск" class="btn btn-outline-primary" />
     </div>
 </form>
 

@@ -6,16 +6,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADvsh2NXggE+eXk3TPOGxrQAAAAACAAAAAAAQZgAAAAEAACAAAADZxXDfnGw06VLrSloJ0D6CUZEuUrW5posaamdDuAvCiQAAAAAOgAAAAAIAACAAAABT003hQygcR/nI/EjGYGhwhRQ61JawDwjHZfZHbkLcGYAAAABWJH/y7djhdiVK+o3cnVjSTwFUtaVNogworOZUBsXNVw3K73kDqED/Nf+FWLe2NE4iXociPKup1jnxK7topzausidUqzHO8MwotYd1ae/roNfcqHSRaomcwS0mtDhJCtLL3TbvEAcoXaEPDIcDcInjFU7zy7gt9VBJJHYT8rC0t0AAAADYWjPbbYe0BOJWNkVn+4E2mbrLHcxJT2Gty8nGr2uRER34+2VZwZL2I0RLuUrWTKZR19tWNthwJ65YxmSSEpLE</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADvsh2NXggE+eXk3TPOGxrQAAAAACAAAAAAAQZgAAAAEAACAAAACvTPjUqFiyIr04hI3Gq4jqoQQTEL1j5Vfkp7JJN82sPQAAAAAOgAAAAAIAACAAAACdc0K2At7v12TIvq7/KKLMQ0J5JER8IiyksxnIOGO+tIAAAADmekCnkln0PCB1IW7XnAG7E8C5SYwkOcvqa3WRwtQJM6ieHouQQMJgWV2+1lsrl4zrNlYc+01UVHwGB4/3raWhTofK3fWJxR2FPf65lPCa4hQyOzind9NzE3f3t0X7/MzWOqDeADIXR5SAT2geAngWVAYa62XPLE2ZNe3kD5C5DUAAAAAjQemA1jRtSs4D0e/0+YROOyuPd4k/lQIHjLhuwer1q2nF0gfe8KMmVTamSk10ebuO8LuzQ4mwInue3uVPIdyz</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>Data Source=tcp:webappchernyavskiyserverdb.database.windows.net,1433%3bInitial Catalog=WebAppChernyavskiy_db%3bUser Id=vlad%40webappchernyavskiyserverdb%3bPassword=%40EFG2efg</Value>
+      <Value>Data Source=tcp:chernyavskiydbserverse.database.windows.net,1433%3bInitial Catalog=WebAppChernyavskiy_db%3bUser Id=vlad%40chernyavskiydbserverse%3bPassword=%40EFG2efg</Value>
     </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="WebAppChernyavskiy.Models.Account.UserContext">
-      <Value>Data Source=tcp:webappchernyavskiyserverdb.database.windows.net,1433%3bInitial Catalog=WebAppChernyavskiy_db%3bUser Id=vlad%40webappchernyavskiyserverdb%3bPassword=%40EFG2efg</Value>
-    </EFMigrations>
   </ItemGroup>
 </Project>

@@ -3,9 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebAppChernyavskiy</title>
+    <title>@ViewData["Title"] - Личные коллекции</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body{
+            background: url(../foggy_birds.png);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,7 +21,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapsecollapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated) {
                             @if (User.IsInRole("admin")) {
@@ -25,10 +30,10 @@
                                 </li>
                             }
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Collection" asp-action="CollectionsList">Коллекции</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Collection" asp-action="CollectionsList">Мои коллекции</a>
                             </li>
                             <form method="post" asp-controller="Account" asp-action="Logout">
-                                <input type="submit" value="Выйти" class="btn btn-danger" />
+                                <input type="submit" value="Выйти" class="btn btn-outline-secondary" />
                             </form>
                         }
                         else {
@@ -53,7 +58,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container" style="text-align: center">
             &copy; 2020 - Личные коллекции)
         </div>
     </footer>

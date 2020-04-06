@@ -118,10 +118,6 @@ namespace WebAppChernyavskiy.Controllers {
             return RedirectToAction("ItemsList", new { id = item.CollectionId });
         }
 
- //       public IActionResult ItemsList(int? id) {
-   //         return View(db.Items.Include(u => u.Collection).Where(p => p.CollectionId == id).ToList());
-   //     }
-
         [HttpPost]
         public async Task<IActionResult> SaveText(Collection collection) {
             db.Collections.Update(collection);
