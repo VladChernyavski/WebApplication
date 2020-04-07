@@ -12,7 +12,6 @@
 
         <dl class="row">
             @foreach (var item in Model.Items) {
-                if (item.CollectionId == ViewBag.Id) {
                     <dt class="col-sm-6">
                         @Html.DisplayNameFor(model => item.Collection.Name)
                     </dt>
@@ -37,12 +36,7 @@
                             <a class="btn btn-warning" asp-controller="Collection" asp-action="CollectionInfo" asp-route-id="@item.Collection.Id">Редактировать коллекцию</a>
                         </dd>
                     }
-                    break;
-                }
-                else {
-                    <h4>У этого пользователя нет добавленых айтеймов</h4>
-                    break;
-                }
+                break;
             }
 
         </dl>
@@ -55,10 +49,7 @@
             <thead>
                 <tr>
                     <th>
-                        <a asp-action="CollectionInfo" asp-route-sortOrder="@(Model.SortViewModel.NameSort)">
-                            Название
-                            <i class="@ViewBag.UpName"></i>
-                        </a>
+                        Название
                     </th>
                     <th>
                         Описание
@@ -70,7 +61,6 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.Items) {
-                    if (item.CollectionId == ViewBag.Id) {
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Name)
@@ -82,14 +72,12 @@
                                 @Html.DisplayFor(modelItem => item.Date)
                             </td>
                         </tr>
-                    }
                 }
             </tbody>
         </table>
         @if (Model.PageViewModel.HasPreviousPage) {
             <a asp-action="CollectionInfo"
                asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
-               asp-route-sortorder="@(Model.SortViewModel.Current)"
                class="btn  btn-outline-dark">
                 <i class="glyphicon glyphicon-chevron-left"></i>
                 Назад
@@ -98,7 +86,6 @@
         @if (Model.PageViewModel.HasNextPage) {
             <a asp-action="CollectionInfo"
                asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
-               asp-route-sortorder="@(Model.SortViewModel.Current)"
                class="btn btn-outline-dark">
                 Вперед
                 <i class="glyphicon glyphicon-chevron-right"></i>

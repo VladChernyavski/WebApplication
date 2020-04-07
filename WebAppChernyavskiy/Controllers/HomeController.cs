@@ -44,36 +44,19 @@ namespace WebAppChernyavskiy.Controllers {
             return View(viewModel);
         }
 
-        public async Task<IActionResult> CollectionInfo(int? id, SortState sortOrder, int page = 1) {
+        public async Task<IActionResult> CollectionInfo(int? id, int page = 1) {
             int pageSize = 4;
             ViewBag.Id = id;
 
-            IQueryable<Item> item = db.Items.Include(x => x.Collection);
-
-            switch (sortOrder) {
-                case SortState.NameAsc:
-                    item = item.OrderBy(s => s.Name);
-                    break;
-                case SortState.NameDesc:
-                    item = item.OrderByDescending(s => s.Name);
-                    break;
-            }
+            IQueryable<Item> item = db.Items.Include(x => x.Collection).Where(p => p.CollectionId == id);
 
             var count = await item.CountAsync();
             var items = await item.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
             PageAndSortViewModel viewModel = new PageAndSortViewModel {
                 PageViewModel = new PageViewModel(count, page, pageSize),
-                SortViewModel = new SortViewModel(sortOrder),
                 Items = items
             };
-
-            if (viewModel.SortViewModel.UpName) {
-                ViewBag.UpName = "glyphicon glyphicon-chevron-up";
-            }
-            else {
-                ViewBag.UpName = "glyphicon glyphicon-chevron-down";
-            }
 
             return View(viewModel);
         }

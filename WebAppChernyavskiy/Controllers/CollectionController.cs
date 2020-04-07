@@ -20,7 +20,6 @@ namespace WebAppChernyavskiy.Controllers {
         }
 
         public IActionResult CollectionsList(int? topic, string name) {
-            //        return View(db.Collections.Include(u => u.Topic).Where(p => p.UserId == User.Identity.Name).ToList());
             IQueryable<Collection> collections = db.Collections.Include(p => p.Topic);
             if (topic != null && topic != 0) {
                 collections = collections.Where(p => p.TopicId == topic);
@@ -96,7 +95,10 @@ namespace WebAppChernyavskiy.Controllers {
         public async Task<IActionResult> Delete(int? id) {
             if (id != null) {
                 Collection collection = await db.Collections.FirstOrDefaultAsync(p => p.Id == id);
+                
                 if (collection != null) {
+                    var items = db.Items.Where(p => p.CollectionId == collection.Id);
+                    db.Items.RemoveRange(items);
                     db.Collections.Remove(collection);
                     await db.SaveChangesAsync();
                     return RedirectToAction("CollectionsList");
@@ -116,7 +118,7 @@ namespace WebAppChernyavskiy.Controllers {
             db.Items.Add(item);
             db.SaveChanges();
             return RedirectToAction("ItemsList", new { id = item.CollectionId });
-        }
+        } 
 
         [HttpPost]
         public async Task<IActionResult> SaveText(Collection collection) {
@@ -129,7 +131,7 @@ namespace WebAppChernyavskiy.Controllers {
             int pageSize = 5;
             ViewBag.Id = id;
 
-            IQueryable<Item> item = db.Items.Include(x => x.Collection);
+            IQueryable<Item> item = db.Items.Include(x => x.Collection).Where(p => p.CollectionId == id);
 
             switch (sortOrder) {
                 case SortState.NameAsc:
